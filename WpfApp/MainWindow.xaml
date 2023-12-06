@@ -66,6 +66,11 @@
             <Button>WP8</Button>
         </WrapPanel>
 
+        <Canvas Background="Bisque" Width="10" Height="10" >
+            <Button Canvas.Left="40" Canvas.Bottom="40">Button C1</Button>
+            <Button Canvas.Left="-150" Canvas.Bottom="40"  >Button C2</Button>
+        </Canvas>
+
     </DockPanel>
 
 </Window>
