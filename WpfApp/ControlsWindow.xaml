@@ -57,8 +57,10 @@
             <StackPanel Orientation="Horizontal">
                 <Label Padding="0">Option 3</Label>
                 <Image
-                    Width="32"
-                    Height="32"
+                    Width="35"
+                    Height="35"
+                    MaxHeight="{Binding ElementName=MySlider, Path=Value}"
+                    MaxWidth="{Binding ElementName=MySlider, Path=Value}"
                     Source="/Images/question_mark.jpg" />
             </StackPanel>
         </RadioButton>
