@@ -47,14 +47,24 @@
         <Button Content="9"/>
 
 
-        <StackPanel Orientation="Horizontal" >
+        <StackPanel Orientation="Horizontal">
             <Button>SP1</Button>
             <Button>SP2</Button>
             <Button>SP3</Button>
             <Button>SP4</Button>
             <Button>SP5</Button>
         </StackPanel>
-        
+
+        <WrapPanel Orientation="Vertical">
+            <Button>WP1</Button>
+            <Button>WP2</Button>
+            <Button Padding="10">WP3</Button>
+            <Button>WP4</Button>
+            <Button>WP5</Button>
+            <Button Margin="10">WP6</Button>
+            <Button>WP7</Button>
+            <Button>WP8</Button>
+        </WrapPanel>
 
     </DockPanel>
 
