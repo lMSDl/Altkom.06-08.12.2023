@@ -69,6 +69,7 @@
         <Canvas Background="Bisque" Width="10" Height="10" >
             <Button Canvas.Left="40" Canvas.Bottom="40">Button C1</Button>
             <Button Canvas.Left="-150" Canvas.Bottom="40"  >Button C2</Button>
+
         </Canvas>
 
         <UniformGrid Columns="4" >
@@ -77,8 +78,14 @@
             <Button>UGB3</Button>
             <Button>UGB4</Button>
             <Button>UGB5</Button>
-            <Button>UGB6</Button>
-            <Button>UGB7</Button>
+                <Button Content="UGB6">
+                    <Button.ToolTip>
+                    <Viewbox Width="100" Height="100">
+                        <Button>VB</Button>
+                    </Viewbox>
+                </Button.ToolTip>
+                </Button>
+            <Button ToolTip="Hello!">UGB7</Button>
         </UniformGrid>
 
     </DockPanel>
