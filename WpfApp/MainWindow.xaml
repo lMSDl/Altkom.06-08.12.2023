@@ -71,6 +71,16 @@
             <Button Canvas.Left="-150" Canvas.Bottom="40"  >Button C2</Button>
         </Canvas>
 
+        <UniformGrid Columns="4" >
+            <Button>UGB1</Button>
+            <Button>UGB2</Button>
+            <Button>UGB3</Button>
+            <Button>UGB4</Button>
+            <Button>UGB5</Button>
+            <Button>UGB6</Button>
+            <Button>UGB7</Button>
+        </UniformGrid>
+
     </DockPanel>
 
 </Window>
