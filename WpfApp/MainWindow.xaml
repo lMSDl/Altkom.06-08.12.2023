@@ -47,13 +47,16 @@
         <Button Content="9"/>
 
 
-        <StackPanel Orientation="Horizontal">
-            <Button>SP1</Button>
-            <Button>SP2</Button>
-            <Button>SP3</Button>
-            <Button>SP4</Button>
-            <Button>SP5</Button>
-        </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Horizontal">
+                <Button>SP1</Button>
+                <Button>SP2</Button>
+                <Button>SP3</Button>
+                <Button>SP4</Button>
+                <Button>SP5</Button>
+            </StackPanel>
+
+        </ScrollViewer>
 
         <WrapPanel Orientation="Vertical">
             <Button>WP1</Button>
@@ -72,7 +75,7 @@
 
         </Canvas>
 
-        <UniformGrid Columns="4" >
+        <UniformGrid Columns="2" >
             <Button>UGB1</Button>
             <Button>UGB2</Button>
             <Button>UGB3</Button>
@@ -87,7 +90,6 @@
                 </Button>
             <Button ToolTip="Hello!">UGB7</Button>
         </UniformGrid>
-
     </DockPanel>
 
 </Window>
