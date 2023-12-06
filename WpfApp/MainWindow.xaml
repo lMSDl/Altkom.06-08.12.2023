@@ -4,11 +4,37 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        >
+        mc:Ignorable="d" Height="450" Width="800">
 
-    <!--<Button Background="Blue" Foreground="White" Content="Kliknij mnie!"></Button>-->
-    <Button Background="Blue" Foreground="White">Click me!</Button>
+    <Window.Title>Ala ma kota</Window.Title>
+
+
+    <Grid Background="Aqua" >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Content="6"/>
+        
+        <Button Background="Blue" Foreground="White">Click me!</Button>
+        <Button Width="75" Height="200" Background="Red" Foreground="White" Content="Kliknij mnie!"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Top"/>
+
+        <Button Grid.Column="1" Grid.Row="1" Content="3"/>
+        <Button Grid.Column="3" Grid.Row="2" Content="5"/>
+        <Button Grid.Column="2" Grid.Row="3" Content="44444"/>
+
+    </Grid>
 
 </Window>
