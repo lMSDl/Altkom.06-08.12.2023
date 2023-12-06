@@ -20,6 +20,8 @@ namespace WpfApp
         {
             InitializeComponent();
 
+
+            
         }
     }
 }

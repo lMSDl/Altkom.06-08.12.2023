@@ -21,11 +21,15 @@
         </Label>
         <Label Content="i dwa psy" />
 
-        <TextBlock x:Name="MyTextBlock" FontSize="24" TextTrimming="WordEllipsis">
+        <TextBlock
+            x:Name="MyTextBlock"
+            FontSize="24"
+            TextTrimming="WordEllipsis">
             Ala ma<LineBreak /> <Underline>kota</Underline> <Hyperlink NavigateUri="https://www.altkom.pl">i dwa psy</Hyperlink>
         </TextBlock>
 
-        <TextBox x:Name="MyTextBox"
+        <TextBox
+            x:Name="MyTextBox"
             AcceptsReturn="True"
             AcceptsTab="True"
             SpellCheck.IsEnabled="True"
@@ -39,10 +43,25 @@
             PasswordChar="^" />
 
 
-        <CheckBox IsThreeState="True">Value 0</CheckBox>
-        <CheckBox>Value 1</CheckBox>
-        <CheckBox IsChecked="True" IsEnabled="False">Value 2</CheckBox>
-        <CheckBox Content="Value 3" IsChecked="True" />
+        <CheckBox
+            x:Name="MainCheckbox"
+            Click="MainCheckbox_Click"
+            IsThreeState="True">
+            Value 0
+        </CheckBox>
+        <CheckBox x:Name="Checkbox1" Click="CheckBox_Click">Value 1</CheckBox>
+        <CheckBox
+            x:Name="Checkbox2"
+            Click="CheckBox_Click"
+            IsChecked="True"
+            IsEnabled="True">
+            Value 2
+        </CheckBox>
+        <CheckBox
+            x:Name="Checkbox3"
+            Click="CheckBox_Click"
+            Content="Value 3"
+            IsChecked="True" />
 
         <Label>Question 1</Label>
         <RadioButton GroupName="Q1">Option 1</RadioButton>
@@ -59,14 +78,14 @@
                 <Image
                     Width="35"
                     Height="35"
-                    MaxHeight="{Binding ElementName=MySlider, Path=Value}"
                     MaxWidth="{Binding ElementName=MySlider, Path=Value}"
+                    MaxHeight="{Binding ElementName=MySlider, Path=Value}"
                     Source="/Images/question_mark.jpg" />
             </StackPanel>
         </RadioButton>
 
 
-        <Button>
+        <Button Click="Button_Click">
             <StackPanel Orientation="Vertical">
                 <Label Padding="0">Option 3</Label>
                 <Image
@@ -76,25 +95,30 @@
             </StackPanel>
         </Button>
 
-        <Slider x:Name="MySlider"
+        <Slider
+            x:Name="MySlider"
+            AutoToolTipPlacement="TopLeft"
             Foreground="Black"
             IsSnapToTickEnabled="True"
             Maximum="100"
             Minimum="-25"
             TickFrequency="5"
             TickPlacement="Both"
-            AutoToolTipPlacement="TopLeft"
             Value="{Binding ElementName=MyTextBox, Path=Text.Length, Mode=OneWay}" />
 
 
         <Canvas Height="100">
-            <Line X1="250" Canvas.Top="50" Canvas.Left="50" Stroke="Black">
+            <Line
+                Canvas.Left="50"
+                Canvas.Top="50"
+                Stroke="Black"
+                X1="250">
                 <Line.LayoutTransform>
-                    <RotateTransform Angle="{Binding ElementName=MySlider, Path=Value}"/>
+                    <RotateTransform Angle="{Binding ElementName=MySlider, Path=Value}" />
                 </Line.LayoutTransform>
             </Line>
         </Canvas>
-        
+
     </StackPanel>
 
 </Window>
