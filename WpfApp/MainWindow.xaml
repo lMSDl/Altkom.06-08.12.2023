@@ -46,6 +46,16 @@
 
         <Button Content="9"/>
 
+
+        <StackPanel Orientation="Horizontal" >
+            <Button>SP1</Button>
+            <Button>SP2</Button>
+            <Button>SP3</Button>
+            <Button>SP4</Button>
+            <Button>SP5</Button>
+        </StackPanel>
+        
+
     </DockPanel>
 
 </Window>
