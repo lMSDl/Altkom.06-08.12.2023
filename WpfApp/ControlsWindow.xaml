@@ -82,8 +82,17 @@
             TickFrequency="5"
             TickPlacement="Both"
             AutoToolTipPlacement="TopLeft"
-            Value="50" />
+            Value="{Binding ElementName=MyTextBox, Path=Text.Length, Mode=OneWay}" />
 
+
+        <Canvas Height="100">
+            <Line X1="250" Canvas.Top="50" Canvas.Left="50" Stroke="Black">
+                <Line.LayoutTransform>
+                    <RotateTransform Angle="{Binding ElementName=MySlider, Path=Value}"/>
+                </Line.LayoutTransform>
+            </Line>
+        </Canvas>
+        
     </StackPanel>
 
 </Window>

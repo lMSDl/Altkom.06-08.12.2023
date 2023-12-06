@@ -26,7 +26,7 @@ namespace WpfApp
 
             MyTextBlock.Inlines.Add(new Run("bold") { FontWeight = FontWeights.Bold });
 
-            MySlider.Value = MyTextBox.Text.Length;
+            //MySlider.Value = MyTextBox.Text.Length;
         }
     }
 }
