@@ -31,7 +31,17 @@ namespace WpfApp
             InitializeComponent();
 
             DataContext = this;
-            Products = new Service<Product>(new ProductFaker()).Read();
+            Products = new Service<Product>(new ProductFaker()).Read().Concat(new List<Product>() { new Product { Name = "..", Priority = true } });
+        }
+
+        private void DataGrid_Sorting(object sender, DataGridSortingEventArgs e)
+        {
+            var descriptors = ((DataGrid)sender).Items.SortDescriptions;
+            descriptors.Clear();
+            descriptors.Add(new System.ComponentModel.SortDescription(nameof(Product.Priority), System.ComponentModel.ListSortDirection.Descending));
+            descriptors.Add(new System.ComponentModel.SortDescription(e.Column.SortMemberPath, System.ComponentModel.ListSortDirection.Ascending));
+
+            e.Handled = true;
         }
     }
 }

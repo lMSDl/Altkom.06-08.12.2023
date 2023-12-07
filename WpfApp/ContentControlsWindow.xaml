@@ -169,7 +169,20 @@
             </ListView>
 
         </TabItem>
-        <TabItem Header="DataGrid" />
+        <TabItem Header="DataGrid" >
+            <DataGrid ItemsSource="{Binding Products}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedProduct}"
+                      Sorting="DataGrid_Sorting">
+
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn Header="Priorytet" Binding="{Binding Priority}" />
+                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Data przydatności" Binding="{Binding ExpirationDate}" />
+                    <DataGridTextColumn Header="Cena" Binding="{Binding Price}" />
+                    <DataGridTextColumn Header="Cena" Binding="{Binding Alamakota}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </TabItem>
 
     </TabControl>
 
