@@ -9,7 +9,7 @@
     <Grid>
 
         <DockPanel>
-            <Button Content="Roll" DockPanel.Dock="Bottom"/>
+            <Button Content="Roll" DockPanel.Dock="Bottom" Click="Button_Roll"/>
             <Button Content="+" DockPanel.Dock="Right" FontSize="24" Click="ButtonAdd_Click"/>
             <Button Content="-" DockPanel.Dock="Left" FontSize="32"  Click="ButtonRemove_Click"/>
 

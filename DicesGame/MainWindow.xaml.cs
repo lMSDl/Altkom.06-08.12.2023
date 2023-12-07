@@ -37,5 +37,15 @@ namespace DicesGame
             if(Dices.Any())
                 Dices.RemoveAt(0);
         }
+
+        private void Button_Roll(object sender, RoutedEventArgs e)
+        {
+            var random = new Random();
+
+            foreach (var dice in Dices)
+            {
+                dice.Number = random.Next(1, 7);
+            }
+        }
     }
 }

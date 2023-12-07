@@ -1,13 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DicesGame.Models
 {
-    public class Dice
+    public class Dice : NotifyPropertyChanged
     {
-        public int Number { get; set; }
+        private int number;
+
+        public int Number
+        {
+            get => number; set
+            {
+                number = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }
