@@ -11,26 +11,89 @@
     Height="450"
     mc:Ignorable="d">
 
-    <TabControl
-        BorderBrush="DarkBlue"
-        BorderThickness="10"
-        SelectedIndex="2"
-        TabStripPlacement="Bottom">
 
-        <TabItem>
-            <TabItem.Header>
-                <StackPanel Orientation="Horizontal">
-                    <Rectangle
-                        Width="10"
-                        Height="10"
-                        Fill="Aqua" />
-                    <Label Content="ItemsControl" />
-                </StackPanel>
-            </TabItem.Header>
+    <DockPanel>
 
-            <ScrollViewer>
-                <ItemsControl Background="AliceBlue" ItemsSource="{Binding Products}">
-                    <ItemsControl.ItemTemplate>
+        <ComboBox DockPanel.Dock="Top" SelectedIndex="{Binding ElementName=TabControl, Path=SelectedIndex, Mode=TwoWay}">
+            <ComboBoxItem Content="Items Control" />
+            <ComboBoxItem Content="List Box" />
+            <ComboBoxItem Content="List View" />
+            <ComboBoxItem Content="Data Grid" />
+        </ComboBox>
+
+        <ComboBox
+            DisplayMemberPath="Summary"
+            DockPanel.Dock="Top"
+            ItemsSource="{Binding Products}"
+            SelectedItem="{Binding SelectedProduct}" />
+
+
+        <TabControl
+            x:Name="TabControl"
+            BorderBrush="DarkBlue"
+            BorderThickness="10"
+            SelectedIndex="2"
+            TabStripPlacement="Bottom">
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle
+                            Width="10"
+                            Height="10"
+                            Fill="Aqua" />
+                        <Label Content="ItemsControl" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <ScrollViewer>
+                    <ItemsControl Background="AliceBlue" ItemsSource="{Binding Products}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type models:Product}">
+                                <Grid Margin="4" Background="White">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Content="Nazwa:" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Content="{Binding Name}" />
+                                    <Label Grid.Row="1" Content="Data ważności:" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Content="{Binding ExpirationDate}" />
+                                    <Label Grid.Row="2" Content="Cena:" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Content="{Binding Price}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                    </ItemsControl>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="ListBox">
+                <ListBox
+                    Background="AliceBlue"
+                    ItemsSource="{Binding Products}"
+                    SelectedItem="{Binding SelectedProduct}">
+                    <ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type models:Product}">
                             <Grid Margin="4" Background="White">
                                 <Grid.ColumnDefinitions>
@@ -59,69 +122,24 @@
                                     Content="{Binding Price}" />
                             </Grid>
                         </DataTemplate>
-                    </ItemsControl.ItemTemplate>
+                    </ListBox.ItemTemplate>
 
-                    <ItemsControl.ItemsPanel>
+
+                    <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid />
                         </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
+                    </ListBox.ItemsPanel>
+                </ListBox>
 
-                </ItemsControl>
-            </ScrollViewer>
-        </TabItem>
-        <TabItem Header="ListBox">
-            <ListBox
-                Background="AliceBlue"
-                ItemsSource="{Binding Products}"
-                SelectedItem="{Binding SelectedProduct}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate DataType="{x:Type models:Product}">
-                        <Grid Margin="4" Background="White">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0" Content="Nazwa:" />
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Content="{Binding Name}" />
-                            <Label Grid.Row="1" Content="Data ważności:" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Content="{Binding ExpirationDate}" />
-                            <Label Grid.Row="2" Content="Cena:" />
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                Content="{Binding Price}" />
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+            </TabItem>
+            <TabItem Header="ListView">
 
-
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid />
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-            </ListBox>
-
-        </TabItem>
-        <TabItem Header="ListView" >
-
-            <ListView
-    Background="AliceBlue"
-    ItemsSource="{Binding Products}"
-    SelectedItem="{Binding SelectedProduct}">
-                <!--<ListView.ItemTemplate>
+                <ListView
+                    Background="AliceBlue"
+                    ItemsSource="{Binding Products}"
+                    SelectedItem="{Binding SelectedProduct}">
+                    <!--<ListView.ItemTemplate>
                     <DataTemplate DataType="{x:Type models:Product}">
                         <Grid Margin="4" Background="White">
                             <Grid.ColumnDefinitions>
@@ -152,40 +170,43 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>-->
 
-                <ListView.View>
-                    <GridView AllowsColumnReorder="False">
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="False">
 
-                        <GridView.ColumnHeaderTemplate>
-                            <DataTemplate>
-                                <Label FontWeight="Bold" Content="{Binding}" />
-                            </DataTemplate>
-                        </GridView.ColumnHeaderTemplate>
+                            <GridView.ColumnHeaderTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding}" FontWeight="Bold" />
+                                </DataTemplate>
+                            </GridView.ColumnHeaderTemplate>
 
-                        <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Data przydatności" DisplayMemberBinding="{Binding ExpirationDate}" />
-                        <GridViewColumn Header="Cena" DisplayMemberBinding="{Binding Price}" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Nazwa" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ExpirationDate}" Header="Data przydatności" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Price}" Header="Cena" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
-        </TabItem>
-        <TabItem Header="DataGrid" >
-            <DataGrid ItemsSource="{Binding Products}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedProduct}"
-                      Sorting="DataGrid_Sorting">
+            </TabItem>
+            <TabItem Header="DataGrid">
+                <DataGrid
+                    AutoGenerateColumns="False"
+                    ItemsSource="{Binding Products}"
+                    SelectedItem="{Binding SelectedProduct}"
+                    Sorting="DataGrid_Sorting">
 
-                <DataGrid.Columns>
-                    <DataGridCheckBoxColumn Header="Priorytet" Binding="{Binding Priority}" />
-                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" />
-                    <DataGridTextColumn Header="Data przydatności" Binding="{Binding ExpirationDate}" />
-                    <DataGridTextColumn Header="Cena" Binding="{Binding Price}" />
-                    <DataGridTextColumn Header="Cena" Binding="{Binding Alamakota}"/>
-                </DataGrid.Columns>
-            </DataGrid>
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Binding="{Binding Priority}" Header="Priorytet" />
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Nazwa" />
+                        <DataGridTextColumn Binding="{Binding ExpirationDate}" Header="Data przydatności" />
+                        <DataGridTextColumn Binding="{Binding Price}" Header="Cena" />
+                        <DataGridTextColumn Binding="{Binding Alamakota}" Header="Cena" />
+                    </DataGrid.Columns>
+                </DataGrid>
 
-        </TabItem>
+            </TabItem>
 
-    </TabControl>
-
+        </TabControl>
+    </DockPanel>
 
 
 </Window>
