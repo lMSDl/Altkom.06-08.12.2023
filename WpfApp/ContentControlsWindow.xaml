@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:Models;assembly=Models"
     xmlns:properties="clr-namespace:WpfApp.Properties"
+    xmlns:controls="clr-namespace:WpfApp.Controls"
     Title="ContentControlsWindow"
     Width="800"
     Height="450"
@@ -56,18 +57,9 @@
                     </StackPanel>
                 </TabItem.Header>
 
-                <ScrollViewer>
-                    <ItemsControl Background="AliceBlue" ItemsSource="{Binding Products}"
-                                  ItemTemplate="{StaticResource ResourceKey=ProductTemplate}">
+                <controls:ScrollableItemsControl MyItemsSource="{Binding Products}"
+                                                 MyItemTemplate="{StaticResource ResourceKey=ProductTemplate}"/>
 
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-
-                    </ItemsControl>
-                </ScrollViewer>
             </TabItem>
             <TabItem Header="ListBox">
 
@@ -150,7 +142,7 @@
 
             </TabItem>
             <TabItem Header="DataGrid">
-                <DataGrid
+                <!--<DataGrid
                     AutoGenerateColumns="False"
                     ItemsSource="{Binding Products}"
                     SelectedItem="{Binding SelectedProduct}"
@@ -162,7 +154,12 @@
                         <DataGridTextColumn Binding="{Binding ExpirationDate}" Header="{x:Static properties:Resources.ExpirationDate}" />
                         <DataGridTextColumn Binding="{Binding Price}" Header="{x:Static properties:Resources.Price}" />
                     </DataGrid.Columns>
-                </DataGrid>
+                </DataGrid>-->
+
+                <controls:CustomDataGrid ItemsSource="{Binding Products}" 
+                    SelectedItem="{Binding SelectedProduct}">
+                    
+                </controls:CustomDataGrid>
 
             </TabItem>
 
