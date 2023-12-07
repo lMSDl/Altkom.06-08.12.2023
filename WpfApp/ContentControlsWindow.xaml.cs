@@ -24,6 +24,8 @@ namespace WpfApp
     {
         public IEnumerable<Product> Products { get; set; }
 
+        public Product SelectedProduct { get; set; }
+
         public ContentControlsWindow()
         {
             InitializeComponent();
