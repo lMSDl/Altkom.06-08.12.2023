@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:WpfApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:Models;assembly=Models"
+    xmlns:properties="clr-namespace:WpfApp.Properties"
     Title="ContentControlsWindow"
     Width="800"
     Height="450"
@@ -19,8 +20,6 @@
                 <ResourceDictionary Source="/ResourceDictionaries/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        
-
     </Window.Resources>
 
 
@@ -159,10 +158,9 @@
 
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn Binding="{Binding Priority}" Header="Priorytet" />
-                        <DataGridTextColumn Binding="{Binding Name}" Header="Nazwa" />
-                        <DataGridTextColumn Binding="{Binding ExpirationDate}" Header="Data przydatności" />
-                        <DataGridTextColumn Binding="{Binding Price}" Header="Cena" />
-                        <DataGridTextColumn Binding="{Binding Alamakota}" Header="Cena" />
+                        <DataGridTextColumn Binding="{Binding Name}" Header="{x:Static properties:Resources.Name}" />
+                        <DataGridTextColumn Binding="{Binding ExpirationDate}" Header="{x:Static properties:Resources.ExpirationDate}" />
+                        <DataGridTextColumn Binding="{Binding Price}" Header="{x:Static properties:Resources.Price}" />
                     </DataGrid.Columns>
                 </DataGrid>
 

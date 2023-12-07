@@ -9,6 +9,10 @@ namespace WpfApp
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            //Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+        }
     }
 
 }
