@@ -4,17 +4,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:WpfApp"
     StartupUri="ContentControlsWindow.xaml">
-    <Application.Resources >
+    <Application.Resources>
 
 
         <Style x:Key="LargeFont" TargetType="Label">
-            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontSize" Value="24" />
         </Style>
 
-        <Style x:Key="LargeBoldFont" TargetType="Label" BasedOn="{StaticResource LargeFont}">
-            <Setter Property="FontWeight" Value="Bold"/>
+        <Style
+            x:Key="LargeBoldFont"
+            BasedOn="{StaticResource LargeFont}"
+            TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold" />
         </Style>
-        
+
 
     </Application.Resources>
 </Application>
