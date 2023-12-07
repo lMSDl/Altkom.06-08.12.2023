@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,12 @@ namespace WpfApp
         private void MainCheckbox_Click(object sender, RoutedEventArgs e)
         {
             Checkbox1.IsChecked = Checkbox2.IsChecked = Checkbox3.IsChecked = MainCheckbox.IsChecked ?? false;
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
+            e.Handled = true;
         }
     }
 }

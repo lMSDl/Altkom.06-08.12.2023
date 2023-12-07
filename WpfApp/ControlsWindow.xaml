@@ -25,7 +25,7 @@
             x:Name="MyTextBlock"
             FontSize="24"
             TextTrimming="WordEllipsis">
-            Ala ma<LineBreak /> <Underline>kota</Underline> <Hyperlink NavigateUri="https://www.altkom.pl">i dwa psy</Hyperlink>
+            Ala ma<LineBreak /> <Underline>kota</Underline> <Hyperlink NavigateUri="https://www.altkom.pl" RequestNavigate="Hyperlink_RequestNavigate">i dwa psy</Hyperlink>
         </TextBlock>
 
         <TextBox
