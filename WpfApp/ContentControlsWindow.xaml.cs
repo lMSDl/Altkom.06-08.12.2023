@@ -1,38 +1,54 @@
 ﻿using Models;
 using Services.Bogus;
 using Services.Bogus.Fakers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfApp
 {
     /// <summary>
     /// Interaction logic for ContentControlsWindow.xaml
     /// </summary>
-    public partial class ContentControlsWindow : Window
+    public partial class ContentControlsWindow : Window, INotifyPropertyChanged
     {
-        public IEnumerable<Product> Products { get; set; }
+        private Product? selectedProduct;
 
-        public Product? SelectedProduct { get; set; }
+        public ObservableCollection<Product> Products { get; set; }
+
+        public Product? SelectedProduct
+        {
+            get => selectedProduct;
+            set
+            {
+                selectedProduct = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedProduct)));
+            }
+        }
 
         public ContentControlsWindow()
         {
             InitializeComponent();
 
             DataContext = this;
-            Products = new Service<Product>(new ProductFaker()).Read().Concat(new List<Product>() { new Product { Name = "..", Priority = true } });
+            Products = new ObservableCollection<Product>(new Service<Product>(new ProductFaker()).Read().Concat(new List<Product>() { new Product { Name = "..", Priority = true } }));
+
+            _ = Task.Run(async () =>
+            {
+                for (int i = 0; i < 10; i++)
+                {
+
+                    await Task.Delay(2500);
+
+                    Application.Current.Dispatcher.Invoke(() =>
+                    Products.Add(new Product { Name = i.ToString() }));
+                }
+            });
+
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private void DataGrid_Sorting(object sender, DataGridSortingEventArgs e)
         {

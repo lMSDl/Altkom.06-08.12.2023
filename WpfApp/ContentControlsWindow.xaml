@@ -13,7 +13,6 @@
 
 
     <DockPanel>
-
         <ComboBox DockPanel.Dock="Top" SelectedIndex="{Binding ElementName=TabControl, Path=SelectedIndex, Mode=TwoWay}">
             <ComboBoxItem Content="Items Control" />
             <ComboBoxItem Content="List Box" />
@@ -25,7 +24,7 @@
             DisplayMemberPath="Summary"
             DockPanel.Dock="Top"
             ItemsSource="{Binding Products}"
-            SelectedItem="{Binding SelectedProduct}" />
+            SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" />
 
 
         <TabControl
@@ -87,7 +86,7 @@
 
                     </ItemsControl>
                 </ScrollViewer>
-            </TabItem>
+            </TabItem>-->
             <TabItem Header="ListBox">
                 <ListBox
                     Background="AliceBlue"
