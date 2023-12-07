@@ -31,7 +31,7 @@
             x:Name="TabControl"
             BorderBrush="DarkBlue"
             BorderThickness="10"
-            SelectedIndex="2"
+            SelectedIndex="{Binding SelectedTabIndex}"
             TabStripPlacement="Bottom">
 
             <TabItem>

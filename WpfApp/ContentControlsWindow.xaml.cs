@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using WpfApp.Properties;
 
 namespace WpfApp
 {
@@ -24,6 +25,16 @@ namespace WpfApp
             {
                 selectedProduct = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedProduct)));
+            }
+        }
+
+        public int SelectedTabIndex
+        {
+            get => Settings.Default.SelectedTabIndex;
+            set
+            {
+                Settings.Default.SelectedTabIndex = value;
+                Settings.Default.Save();
             }
         }
 
