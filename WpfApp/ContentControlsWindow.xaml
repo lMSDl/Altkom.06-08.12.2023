@@ -115,7 +115,60 @@
             </ListBox>
 
         </TabItem>
-        <TabItem Header="ListView" />
+        <TabItem Header="ListView" >
+
+            <ListView
+    Background="AliceBlue"
+    ItemsSource="{Binding Products}"
+    SelectedItem="{Binding SelectedProduct}">
+                <!--<ListView.ItemTemplate>
+                    <DataTemplate DataType="{x:Type models:Product}">
+                        <Grid Margin="4" Background="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Content="Nazwa:" />
+                            <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Content="{Binding Name}" />
+                            <Label Grid.Row="1" Content="Data ważności:" />
+                            <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Content="{Binding ExpirationDate}" />
+                            <Label Grid.Row="2" Content="Cena:" />
+                            <Label
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Content="{Binding Price}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False">
+
+                        <GridView.ColumnHeaderTemplate>
+                            <DataTemplate>
+                                <Label FontWeight="Bold" Content="{Binding}" />
+                            </DataTemplate>
+                        </GridView.ColumnHeaderTemplate>
+
+                        <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Data przydatności" DisplayMemberBinding="{Binding ExpirationDate}" />
+                        <GridViewColumn Header="Cena" DisplayMemberBinding="{Binding Price}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </TabItem>
         <TabItem Header="DataGrid" />
 
     </TabControl>
