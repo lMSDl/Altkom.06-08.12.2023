@@ -16,4 +16,11 @@
 	  </Content>
   </ItemGroup>
 
+	
+	
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Services.Bogus\Services.Bogus.csproj" />
+  </ItemGroup>
+
 </Project>

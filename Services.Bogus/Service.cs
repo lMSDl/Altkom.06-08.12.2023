@@ -15,7 +15,7 @@ namespace Services.Bogus
 
         public IEnumerable<T> Read()
         {
-            throw new NotImplementedException();
+            return _entities.ToList();
         }
     }
 }

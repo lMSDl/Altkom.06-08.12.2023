@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Models;
+using Services.Bogus;
+using Services.Bogus.Fakers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +22,14 @@ namespace WpfApp
     /// </summary>
     public partial class ContentControlsWindow : Window
     {
+        public IEnumerable<Product> Products { get; set; }
+
         public ContentControlsWindow()
         {
             InitializeComponent();
+
+            DataContext = this;
+            Products = new Service<Product>(new ProductFaker()).Read();
         }
     }
 }
