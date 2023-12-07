@@ -6,10 +6,6 @@
     StartupUri="ContentControlsWindow.xaml">
     <Application.Resources >
 
-        <Style TargetType="Label">
-            <Setter Property="Foreground" Value="Blue"/>
-            <Setter Property="FontWeight" Value="ExtraBlack"/>
-        </Style>
 
         <Style x:Key="LargeFont" TargetType="Label">
             <Setter Property="FontSize" Value="24"/>
