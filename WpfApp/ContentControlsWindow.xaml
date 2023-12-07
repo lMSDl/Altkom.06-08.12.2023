@@ -12,7 +12,7 @@
     mc:Ignorable="d">
 
 
-    <DockPanel>
+    <DockPanel >
         <ComboBox DockPanel.Dock="Top" SelectedIndex="{Binding ElementName=TabControl, Path=SelectedIndex, Mode=TwoWay}">
             <ComboBoxItem Content="Items Control" />
             <ComboBoxItem Content="List Box" />
@@ -86,8 +86,19 @@
 
                     </ItemsControl>
                 </ScrollViewer>
-            </TabItem>-->
+            </TabItem>
             <TabItem Header="ListBox">
+
+                <TabItem.Resources>
+
+                        <Style TargetType="Label">
+                            <Setter Property="Foreground" Value="Red"/>
+                            <Setter Property="FontStyle" Value="Italic"/>
+
+                        </Style>
+
+                </TabItem.Resources>
+                
                 <ListBox
                     Background="AliceBlue"
                     ItemsSource="{Binding Products}"
@@ -106,11 +117,13 @@
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" Content="Nazwa:" />
                                 <Label
+                                    Style="{StaticResource LargeFont}"
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Content="{Binding Name}" />
                                 <Label Grid.Row="1" Content="Data ważności:" />
                                 <Label
+                                    Style="{StaticResource LargeBoldFont}"
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     Content="{Binding ExpirationDate}" />
