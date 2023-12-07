@@ -8,6 +8,6 @@ namespace DicesGame.Models
 {
     public class Dice
     {
-        public int Value { get; set; }
+        public int Number { get; set; }
     }
 }

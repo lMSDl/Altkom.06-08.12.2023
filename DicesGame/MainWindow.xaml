@@ -28,7 +28,41 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="Images/kostkapusta.png"/>
+                        <Image>
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Setter Property="Source" Value="Images/kostkapusta.png"/>
+
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Number}" Value="1">
+                                            <Setter Property="Source" Value="Images/kostka1.png"/>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding Number}" Value="2">
+                                            <Setter Property="Source" Value="Images/kostka2.png"/>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding Number}" Value="3">
+                                            <Setter Property="Source" Value="Images/kostka3.png"/>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding Number}" Value="4">
+                                            <Setter Property="Source" Value="Images/kostka4.png"/>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding Number}" Value="5">
+                                            <Setter Property="Source" Value="Images/kostka5.png"/>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding Number}" Value="6">
+                                            <Setter Property="Source" Value="Images/kostka6.png"/>
+                                        </DataTrigger>
+
+                                    </Style.Triggers>
+                                    
+                                </Style>
+                            </Image.Style>
+                        </Image>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 

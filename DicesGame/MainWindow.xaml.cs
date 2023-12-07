@@ -22,7 +22,7 @@ namespace DicesGame
         {
             InitializeComponent();
             DataContext = this;
-            Dices = new ObservableCollection<Dice>( Enumerable.Range(1, 6).Select(x => new Dice() { Value = x} ));
+            Dices = new ObservableCollection<Dice>( Enumerable.Range(1, 6).Select(x => new Dice() { Number = x} ));
         }
 
         public ObservableCollection<Dice> Dices { get; }
