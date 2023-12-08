@@ -35,6 +35,11 @@
                 <Label Content="{Binding Dices.Count}" />
             </StackPanel>
 
+            <ProgressBar
+                Height="16"
+                DockPanel.Dock="Bottom"
+                Maximum="{Binding MaxProgress}"
+                Value="{Binding Progress}" />
 
             <ItemsControl ItemsSource="{Binding Dices}">
                 <ItemsControl.ItemsPanel>
@@ -92,6 +97,7 @@
             </ItemsControl>
 
         </DockPanel>
+
 
 
     </Grid>

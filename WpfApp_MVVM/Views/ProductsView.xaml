@@ -31,8 +31,7 @@
     <Grid>
         <DockPanel>
 
-            <Grid DockPanel.Dock="Bottom"
-                  IsEnabled="{Binding IsLoading, Converter={converters:NegationConverter}}">
+            <Grid DockPanel.Dock="Bottom" IsEnabled="{Binding IsLoading, Converter={converters:NegationConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -76,8 +75,11 @@
             </DataGrid>
         </DockPanel>
 
-        <ProgressBar Opacity="0.5" IsIndeterminate="True" Foreground="Gray"
-                     Height="25"
-                     Visibility="{Binding IsLoading, Converter={converters:BoolToVisibilityConverter Invert=True}}"/>
+        <ProgressBar
+            Height="25"
+            Foreground="Gray"
+            IsIndeterminate="True"
+            Opacity="0.5"
+            Visibility="{Binding IsLoading, Converter={converters:BoolToVisibilityConverter Invert=True}}" />
     </Grid>
 </Page>
