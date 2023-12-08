@@ -15,7 +15,7 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <converters:DateToIsExpiredConverter x:Key="IsExpiredConverter" />
+        <!--<converters:DateToIsExpiredConverter x:Key="IsExpiredConverterA" />-->
     </Page.Resources>
 
     <Page.DataContext>
@@ -70,7 +70,7 @@
                     <DataGridTextColumn Binding="{Binding Name}" Header="{x:Static properties:Resources.Name}" />
                     <DataGridTextColumn Binding="{Binding ExpirationDate}" Header="{x:Static properties:Resources.ExpirationDate}" />
                     <DataGridTextColumn Binding="{Binding Price}" Header="{x:Static properties:Resources.Price}" />
-                    <DataGridCheckBoxColumn Binding="{Binding ExpirationDate, Mode=OneWay, Converter={StaticResource IsExpiredConverter}}" Header="{x:Static properties:Resources.IsExpired}" />
+                    <DataGridCheckBoxColumn Binding="{Binding ExpirationDate, Mode=OneWay, Converter={converters:DateToIsExpiredConverter}}" Header="{x:Static properties:Resources.IsExpired}" />
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
