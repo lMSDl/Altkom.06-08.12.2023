@@ -61,6 +61,15 @@ namespace WpfApp_MVVM.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dodaj.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Anuluj.
         /// </summary>
         public static string Cancel {

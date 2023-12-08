@@ -30,14 +30,20 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <Button
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Command="{Binding DeleteCommand}"
                     Content="{x:Static properties:Resources.Delete}" />
                 <Button
                     Grid.Column="1"
+                    Command="{Binding AddCommand}"
+                    Content="{x:Static properties:Resources.Add}"
+                    CommandParameter="{x:Type local:ProductView}"/>
+                <Button
+                    Grid.Column="2"
                     Command="{Binding EditCommand}"
                     Content="{x:Static properties:Resources.Edit}"
                     CommandParameter="{x:Type local:ProductView}"/>

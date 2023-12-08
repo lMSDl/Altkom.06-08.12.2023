@@ -40,6 +40,10 @@ namespace WpfApp_MVVM.ViewModels
             },
             _ => SelectedProduct is not null);
 
+        public ICommand AddCommand => new DialogCommand<ProductViewModel>(
+            () => new ProductViewModel() { Product = new Product() },
+            vm => Products.Add(vm.Product));
+
         public ICommand DeleteCommand => new Command(_ => Products.Remove(SelectedProduct!),
                                                      _ => SelectedProduct is not null);
         public ICommand LoadedCommand => new Command(_ =>
