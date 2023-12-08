@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,16 @@ namespace WpfApp_MVVM.ViewModels
 {
     internal class ProductViewModel : NotifyPropertyChanged
     {
-        public Product Product { get; set; }
+        public Product Product { get; }
+        private ProductValidator ProductValidator { get; }
 
-        public ICommand SaveCommand => new Command(window => ((Window)window).DialogResult = true);
+        public ProductViewModel(Product product)
+        {
+            Product = product;
+            ProductValidator = new ProductValidator(product);
+        }
+
+        public ICommand SaveCommand => new Command(window => ((Window)window).DialogResult = true, _ => !Product.HasErrors);
 
     }
 }

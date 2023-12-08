@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:WpfApp_MVVM.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:properties="clr-namespace:WpfApp_MVVM.Properties"
+    xmlns:validateProduct="clr-namespace:WpfApp_MVVM.ValidationRules.Product"
     Title="ProductView"
     Width="800"
     Height="450"
@@ -33,10 +34,28 @@
 
             <StackPanel>
                 <Label Content="{x:Static properties:Resources.Name}" />
-                <TextBox Text="{Binding Product.Name}"/>
+                <TextBox Text="{Binding Product.Name, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                         ToolTip="{Binding Product[Name]}"/>
                 
                 <Label Content="{x:Static properties:Resources.Price}" />
-                <TextBox Text="{Binding Product.Price}"/>
+                <TextBox>
+                    <TextBox.Text>
+                        <Binding Path="Product.Price" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validateProduct:PriceValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"  HorizontalAlignment="Right"/>
+                                <AdornedElementPlaceholder/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
 
                 <Label Content="{x:Static properties:Resources.ExpirationDate}" />
                 <TextBox Text="{Binding Product.ExpirationDate}"/>

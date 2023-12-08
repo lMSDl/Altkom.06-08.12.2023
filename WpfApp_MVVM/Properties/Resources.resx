@@ -147,4 +147,10 @@
   <data name="Save" xml:space="preserve">
     <value>Zapisz</value>
   </data>
+  <data name="ValueIsNotANumber" xml:space="preserve">
+    <value>Wartość nie jest liczbą</value>
+  </data>
+  <data name="ValueMustBeGreaterThan0" xml:space="preserve">
+    <value>Wartość musi być większa niż 0</value>
+  </data>
 </root>

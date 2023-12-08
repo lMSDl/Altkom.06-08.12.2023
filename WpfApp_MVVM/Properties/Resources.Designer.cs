@@ -149,5 +149,23 @@ namespace WpfApp_MVVM.Properties {
                 return ResourceManager.GetString("Save", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wartość nie jest liczbą.
+        /// </summary>
+        public static string ValueIsNotANumber {
+            get {
+                return ResourceManager.GetString("ValueIsNotANumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wartość musi być większa niż 0.
+        /// </summary>
+        public static string ValueMustBeGreaterThan0 {
+            get {
+                return ResourceManager.GetString("ValueMustBeGreaterThan0", resourceCulture);
+            }
+        }
     }
 }

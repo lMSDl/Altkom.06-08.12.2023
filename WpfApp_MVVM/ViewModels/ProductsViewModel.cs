@@ -31,7 +31,7 @@ namespace WpfApp_MVVM.ViewModels
 
 
         public ICommand EditCommand => new DialogCommand<ProductViewModel>(
-            () => new ProductViewModel() { Product = (Product)SelectedProduct!.Clone() },
+            () => new ProductViewModel((Product)SelectedProduct!.Clone() ),
             vm =>
             {
                 int index = Products.IndexOf(SelectedProduct!);
@@ -41,7 +41,7 @@ namespace WpfApp_MVVM.ViewModels
             _ => SelectedProduct is not null);
 
         public ICommand AddCommand => new DialogCommand<ProductViewModel>(
-            () => new ProductViewModel() { Product = new Product() },
+            () => new ProductViewModel(new Product()),
             vm => Products.Add(vm.Product));
 
         public ICommand DeleteCommand => new Command(_ => Products.Remove(SelectedProduct!),

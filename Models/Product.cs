@@ -2,9 +2,18 @@
 
 namespace Models
 {
-    public class Product : ICloneable
+    public class Product : DataErrorInfo, ICloneable
     {
-        public string Name { get; set; } = string.Empty;
+        private string name = string.Empty;
+
+        public string Name
+        {
+            get => name; set
+            {
+                name = value;
+                OnPropertyChanged();
+            }
+        }
         public float Price { get; set; }
         public DateTime ExpirationDate { get; set; }
 
