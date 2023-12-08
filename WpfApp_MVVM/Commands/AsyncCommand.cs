@@ -7,17 +7,16 @@ using System.Windows.Input;
 
 namespace WpfApp_MVVM.Commands
 {
-    //RelayCommand
-    internal class Command : ICommand
+    internal class AsyncCommand : ICommand
     {
-        private readonly Action<object?> _execute;
+        private readonly Func<object?, Task> _execute;
         private readonly Func<object?, bool>? _canExecute;
 
-        public Command(Action<object?> execute)
+        public AsyncCommand(Func<object?, Task> execute)
         {
             _execute = execute;
         }
-        public Command(Action<object?> execute, Func<object?, bool> canExecute) : this(execute)
+        public AsyncCommand(Func<object?, Task> execute, Func<object?, bool> canExecute) : this(execute)
         {
             _canExecute = canExecute;
         }
@@ -29,14 +28,17 @@ namespace WpfApp_MVVM.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
+        private bool _isWorking;
+
         public bool CanExecute(object? parameter)
         {
-            return _canExecute?.Invoke(parameter) ?? true;
+            return _canExecute?.Invoke(parameter) ?? !_isWorking;
         }
 
         public void Execute(object? parameter)
         {
-            _execute(parameter);
+            _isWorking = true;
+            _execute(parameter).ContinueWith(x => _isWorking = false);
         }
     }
 }

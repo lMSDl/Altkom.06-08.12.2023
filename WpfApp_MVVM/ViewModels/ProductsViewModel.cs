@@ -10,10 +10,12 @@ using WpfApp_MVVM.Commands;
 
 namespace WpfApp_MVVM.ViewModels
 {
-    public class ProductsViewModel : INotifyPropertyChanged
+    public class ProductsViewModel : NotifyPropertyChanged
     {
-        private IService<Product> Service { get; } = new Service<Product>(new ProductFaker());
+        private IAsyncService<Product> Service { get; } = new AsyncService<Product>(new ProductFaker());
         private Product? selectedProduct;
+        private bool isLoading;
+
         public ObservableCollection<Product> Products { get; set; } = [];
 
 
@@ -23,11 +25,19 @@ namespace WpfApp_MVVM.ViewModels
             set
             {
                 selectedProduct = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedProduct)));
+                OnPropertyChanged();
             }
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public bool IsLoading
+        {
+            get => isLoading; set
+            {
+                isLoading = value;
+                OnPropertyChanged();
+            }
+        }
+
 
 
         public ICommand EditCommand => new DialogCommand<ProductViewModel>(
@@ -46,10 +56,16 @@ namespace WpfApp_MVVM.ViewModels
 
         public ICommand DeleteCommand => new Command(_ => Products.Remove(SelectedProduct!),
                                                      _ => SelectedProduct is not null);
-        public ICommand LoadedCommand => new Command(_ =>
+        public ICommand LoadedCommand => new AsyncCommand(async _ =>
         {
-            Products.Clear();
-            Service.Read().ToList().ForEach(x => Products.Add(x));
+            IsLoading = true;
+            try
+            {
+                Products.Clear();
+                var products = await Service.ReadAsync();
+                products.ToList().ForEach(x => Products.Add(x));
+            }
+            finally { IsLoading = false; }
         });
     }
 }

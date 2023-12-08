@@ -7,42 +7,42 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:properties="clr-namespace:WpfApp_MVVM.Properties"
     xmlns:validateProduct="clr-namespace:WpfApp_MVVM.ValidationRules.Product"
+    x:Name="Dialog"
     Title="ProductView"
     Width="800"
     Height="450"
-    mc:Ignorable="d"
-    x:Name="Dialog"
-    >
+    mc:Ignorable="d">
     <Grid>
         <DockPanel>
 
             <Grid DockPanel.Dock="Bottom">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button Content="{x:Static properties:Resources.Save}"
-                        Command="{Binding SaveCommand}"
-                        CommandParameter="{Binding ElementName=Dialog}"
-                        Grid.Column="0"/>
+                <Button
+                    Grid.Column="0"
+                    Command="{Binding SaveCommand}"
+                    CommandParameter="{Binding ElementName=Dialog}"
+                    Content="{x:Static properties:Resources.Save}" />
 
-                <Button Content="{x:Static properties:Resources.Cancel}"
-                        IsCancel="true"
-                        Grid.Column="1"/>
+                <Button
+                    Grid.Column="1"
+                    Content="{x:Static properties:Resources.Cancel}"
+                    IsCancel="true" />
             </Grid>
 
             <StackPanel>
                 <Label Content="{x:Static properties:Resources.Name}" />
-                <TextBox Text="{Binding Product.Name, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                         ToolTip="{Binding Product[Name]}"/>
-                
+                <TextBox Text="{Binding Product.Name, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Product[Name]}" />
+
                 <Label Content="{x:Static properties:Resources.Price}" />
                 <TextBox>
                     <TextBox.Text>
                         <Binding Path="Product.Price" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <validateProduct:PriceValidationRule/>
+                                <validateProduct:PriceValidationRule />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -50,15 +50,18 @@
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
                             <StackPanel>
-                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"  HorizontalAlignment="Right"/>
-                                <AdornedElementPlaceholder/>
+                                <TextBlock
+                                    HorizontalAlignment="Right"
+                                    Foreground="Red"
+                                    Text="{Binding [0].ErrorContent}" />
+                                <AdornedElementPlaceholder />
                             </StackPanel>
                         </ControlTemplate>
                     </Validation.ErrorTemplate>
                 </TextBox>
 
                 <Label Content="{x:Static properties:Resources.ExpirationDate}" />
-                <TextBox Text="{Binding Product.ExpirationDate}"/>
+                <TextBox Text="{Binding Product.ExpirationDate}" />
             </StackPanel>
 
         </DockPanel>
