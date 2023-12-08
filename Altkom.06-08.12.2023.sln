@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitecturalPatterns", "Ar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitecturalPatterns.ViewModels", "ArchitecturalPatterns.ViewModels\ArchitecturalPatterns.ViewModels.csproj", "{733C932C-01DD-4B5C-AD26-896612A8566D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp_MVVM", "WpfApp_MVVM\WpfApp_MVVM.csproj", "{5C4A1C4C-AF39-49B6-9CDD-177945414D7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{733C932C-01DD-4B5C-AD26-896612A8566D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{733C932C-01DD-4B5C-AD26-896612A8566D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{733C932C-01DD-4B5C-AD26-896612A8566D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C4A1C4C-AF39-49B6-9CDD-177945414D7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C4A1C4C-AF39-49B6-9CDD-177945414D7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C4A1C4C-AF39-49B6-9CDD-177945414D7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C4A1C4C-AF39-49B6-9CDD-177945414D7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
