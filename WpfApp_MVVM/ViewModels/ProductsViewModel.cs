@@ -30,22 +30,15 @@ namespace WpfApp_MVVM.ViewModels
         public event PropertyChangedEventHandler? PropertyChanged;
 
 
-        public ICommand EditCommand => new Command(type =>
-        {
-            Product product = (Product)SelectedProduct.Clone();
-
-            Window windows = (Window)Activator.CreateInstance((Type)type!)!;
-            ProductViewModel vm = new() { Product = product };
-            windows.DataContext = vm;
-
-            if (windows.ShowDialog() == true)
+        public ICommand EditCommand => new DialogCommand<ProductViewModel>(
+            () => new ProductViewModel() { Product = (Product)SelectedProduct!.Clone() },
+            vm =>
             {
-                int index = Products.IndexOf(SelectedProduct);
+                int index = Products.IndexOf(SelectedProduct!);
                 Products.RemoveAt(index);
                 Products.Insert(index, vm.Product);
-            }
-        },
-                                                   _ => SelectedProduct is not null);
+            },
+            _ => SelectedProduct is not null);
 
         public ICommand DeleteCommand => new Command(_ => Products.Remove(SelectedProduct!),
                                                      _ => SelectedProduct is not null);
