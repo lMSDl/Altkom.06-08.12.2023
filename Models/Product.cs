@@ -12,6 +12,8 @@ namespace Models
 
         public string Summary => $"{Name}; {Price} zł";
 
+        //public bool IsExpired => ExpirationDate < DateTime.Now;
+
         public object Clone()
         {
             return MemberwiseClone();

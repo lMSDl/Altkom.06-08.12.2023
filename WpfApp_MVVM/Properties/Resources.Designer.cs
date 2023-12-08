@@ -106,6 +106,15 @@ namespace WpfApp_MVVM.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Przeterminowany.
+        /// </summary>
+        public static string IsExpired {
+            get {
+                return ResourceManager.GetString("IsExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nazwa.
         /// </summary>
         public static string Name {
