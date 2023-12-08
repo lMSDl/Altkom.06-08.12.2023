@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    public class Product
+    public class Product : ICloneable
     {
         public string Name { get; set; } = string.Empty;
         public float Price { get; set; }
@@ -12,5 +12,9 @@ namespace Models
 
         public string Summary => $"{Name}; {Price} zł";
 
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 }

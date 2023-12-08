@@ -27,30 +27,39 @@
 
             <Grid DockPanel.Dock="Bottom">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="2" Content="{x:Static properties:Resources.Delete}" Command="{Binding DeleteCommand}"/>
-                <Button Grid.Column="1" Content="{x:Static properties:Resources.Edit}"/>
-                <Button Grid.Column="0" Content="{x:Static properties:Resources.Refresh}"
-                        Command="{Binding LoadedCommand}"/>
+                <Button
+                    Grid.Column="2"
+                    Command="{Binding DeleteCommand}"
+                    Content="{x:Static properties:Resources.Delete}" />
+                <Button
+                    Grid.Column="1"
+                    Command="{Binding EditCommand}"
+                    Content="{x:Static properties:Resources.Edit}"
+                    CommandParameter="{x:Type local:ProductView}"/>
+                <Button
+                    Grid.Column="0"
+                    Command="{Binding LoadedCommand}"
+                    Content="{x:Static properties:Resources.Refresh}" />
 
             </Grid>
 
             <DataGrid
-            AutoGenerateColumns="False"
-            IsReadOnly="True"
-            ItemsSource="{Binding Products}"
-            SelectedItem="{Binding SelectedProduct}">
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                ItemsSource="{Binding Products}"
+                SelectedItem="{Binding SelectedProduct}">
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" Header="{x:Static properties:Resources.Name}" />
-                <DataGridTextColumn Binding="{Binding ExpirationDate}" Header="{x:Static properties:Resources.ExpirationDate}" />
-                <DataGridTextColumn Binding="{Binding Price}" Header="{x:Static properties:Resources.Price}" />
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="{x:Static properties:Resources.Name}" />
+                    <DataGridTextColumn Binding="{Binding ExpirationDate}" Header="{x:Static properties:Resources.ExpirationDate}" />
+                    <DataGridTextColumn Binding="{Binding Price}" Header="{x:Static properties:Resources.Price}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </DockPanel>
     </Grid>
 </Page>
