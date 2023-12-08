@@ -14,14 +14,21 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
-                        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                            <Ellipse HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Yellow"/>
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Content="{Binding Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Ellipse
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Fill="Yellow" />
+                            <ContentPresenter
+                                Margin="5"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="{Binding Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            
+
         </Style>
     </Window.Resources>
 
@@ -86,7 +93,10 @@
             Content="10"
             DockPanel.Dock="Left" />
         <Button Content="11" DockPanel.Dock="Right" />
-        <Button Content="7" DockPanel.Dock="Top" FontSize="23" />
+        <Button
+            Content="7"
+            DockPanel.Dock="Top"
+            FontSize="23" />
 
         <Button Content="9" />
 
