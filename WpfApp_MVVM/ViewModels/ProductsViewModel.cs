@@ -2,13 +2,8 @@
 using Services.Bogus;
 using Services.Bogus.Fakers;
 using Services.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using WpfApp_MVVM.Commands;
 
@@ -18,7 +13,7 @@ namespace WpfApp_MVVM.ViewModels
     {
         private IService<Product> Service { get; } = new Service<Product>(new ProductFaker());
         private Product? selectedProduct;
-        public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product> {};
+        public ObservableCollection<Product> Products { get; set; } = [];
 
 
         public Product? SelectedProduct
@@ -33,7 +28,12 @@ namespace WpfApp_MVVM.ViewModels
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-
-        public ICommand LoadedCommand => new Command(_ => Service.Read().ToList().ForEach(x => Products.Add(x)));
+        public ICommand DeleteCommand => new Command(_ => Products.Remove(SelectedProduct!), 
+                                                     _ => SelectedProduct is not null);
+        public ICommand LoadedCommand => new Command(_ =>
+        {
+            Products.Clear();
+            Service.Read().ToList().ForEach(x => Products.Add(x));
+        });
     }
 }

@@ -23,7 +23,23 @@
     </behaviors:Interaction.Triggers>
 
     <Grid>
-        <DataGrid
+        <DockPanel>
+
+            <Grid DockPanel.Dock="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="2" Content="{x:Static properties:Resources.Delete}" Command="{Binding DeleteCommand}"/>
+                <Button Grid.Column="1" Content="{x:Static properties:Resources.Edit}"/>
+                <Button Grid.Column="0" Content="{x:Static properties:Resources.Refresh}"
+                        Command="{Binding LoadedCommand}"/>
+
+            </Grid>
+
+            <DataGrid
             AutoGenerateColumns="False"
             IsReadOnly="True"
             ItemsSource="{Binding Products}"
@@ -35,6 +51,6 @@
                 <DataGridTextColumn Binding="{Binding Price}" Header="{x:Static properties:Resources.Price}" />
             </DataGrid.Columns>
         </DataGrid>
-
+        </DockPanel>
     </Grid>
 </Page>
